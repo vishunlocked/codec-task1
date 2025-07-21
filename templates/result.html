@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Extracted Resume Info</title></head>
+<body>
+    <h1>Extracted Resume Information</h1>
+    <ul>
+        <li><strong>Name:</strong> {{ info.name or 'Not found' }}</li>
+        <li><strong>Email:</strong> {{ info.email or 'Not found' }}</li>
+        <li><strong>Phone:</strong> {{ info.phone or 'Not found' }}</li>
+        <li><strong>Skills:</strong> {{ info.skills or 'Not specified' }}</li>
+        <li><strong>Education:</strong> {{ info.education or 'Not specified' }}</li>
+    </ul>
+    <a href="/">Upload another resume</a> |
+    <a href="/resumes">View all resumes</a>
+</body>
+</html>

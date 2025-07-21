@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Resume</title></head>
+<body>
+    <h1>Edit Resume ID: {{ resume_id }}</h1>
+    <form method="post">
+        <label>Name:</label><br>
+        <input type="text" name="name" value="{{ resume[0] }}"><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" value="{{ resume[1] }}"><br><br>
+
+        <label>Phone:</label><br>
+        <input type="text" name="phone" value="{{ resume[2] }}"><br><br>
+
+        <label>Skills:</label><br>
+        <textarea name="skills" rows="3" cols="40">{{ resume[3] }}</textarea><br><br>
+
+        <label>Education:</label><br>
+        <textarea name="education" rows="3" cols="40">{{ resume[4] }}</textarea><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+    <br>
+    <a href="{{ url_for('list_resumes') }}">Back to List</a>
+</body>
+</html>
