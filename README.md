@@ -4,7 +4,7 @@
 This project is a web-based system that automatically extracts and categorizes key information from resumes (PDF format). It uses Python libraries such as spaCy for NLP and PDFPlumber or PyMuPDF for PDF text extraction. Extracted data like candidate name, email, phone, skills, and education are stored in a PostgreSQL database for easy searching and editing.
 
 ---
-
+ 
 ## Features
 - Upload resumes in PDF format through a web interface
 - Automatically extract candidate details (name, email, phone, skills, education)
