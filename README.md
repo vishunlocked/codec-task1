@@ -4,25 +4,24 @@
 
 ---
 
-## 📌 Table of Contents
+##  Table of Contents
 
-- [📄 Project Description](#-project-description)
-- [🚀 Features](#-features)
-- [🧱 Tech Stack](#-tech-stack)
-- [📁 Project Structure](#-project-structure)
-- [⚙️ Installation & Setup](#️-installation--setup)
-- [🗄️ PostgreSQL Database Setup](#️-postgresql-database-setup)
-- [📦 Python Dependencies](#-python-dependencies)
-- [🧪 Running the App](#-running-the-app)
-- [📸 Screenshots](#-screenshots)
-- [✅ Future Improvements](#-future-improvements)
-- [🛡️ Security Notice](#️-security-notice)
-- [📃 License](#-license)
-- [🙏 Acknowledgements](#-acknowledgements)
+- [ Project Description](#-project-description)
+- [ Features](#-features)
+- [ Tech Stack](#-tech-stack)
+- [ Project Structure](#-project-structure)
+- [ Installation & Setup](#️-installation--setup)
+- [ PostgreSQL Database Setup](#️-postgresql-database-setup)
+- [ Python Dependencies](#-python-dependencies)
+- [ Running the App](#-running-the-app)
+- [ Screenshots](#-screenshots)
+- [ Future Improvements](#-future-improvements)
+- [ Security Notice](#️-security-notice)
+- [ Acknowledgements](#-acknowledgements)
 
 ---
 
-## 📄 Project Description
+##  Project Description
 
 This is a **Resume Parser** web application developed using **Python, Flask, spaCy, pdfplumber**, and **PostgreSQL**. It allows users to:
 
@@ -38,7 +37,7 @@ This is a **Resume Parser** web application developed using **Python, Flask, spa
 
 ---
 
-## 🚀 Features
+##  Features
 
 ✅ Upload and parse resumes in `.pdf` format  
 ✅ Extract personal information using **spaCy NLP**  
@@ -52,9 +51,9 @@ This is a **Resume Parser** web application developed using **Python, Flask, spa
 
 ---
 
-## 🧱 Tech Stack
+##  Tech Stack
 
-### 💻 Backend
+###  Backend
 - Python 3.x
 - Flask
 - spaCy (NLP processing)
@@ -63,68 +62,57 @@ This is a **Resume Parser** web application developed using **Python, Flask, spa
 - PyMuPDF (`fitz` library for fast PDF reading in `extract_resume.py`)
 - re (Regex for pattern extraction)
 
-### 🗄️ Database
+###  Database
 - PostgreSQL
 
-### 🌐 Frontend (Templates)
+###  Frontend (Templates)
 - HTML5
 - Jinja2 (Flask template engine)
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
+
+```text
 codec-task1/
 │
-├── templates/ # HTML templates
-│ ├── upload.html # Upload page
-│ ├── result.html # Parsed results
-│ ├── list.html # View all resumes
-│ └── edit.html # Edit a resume entry
+├── templates/               # HTML templates
+│   ├── upload.html          # Upload page
+│   ├── result.html          # Parsed results
+│   ├── list.html            # View all resumes
+│   └── edit.html            # Edit a resume entry
 │
-├── app.py # Main Flask app with routes and logic
-├── extract_resume.py # REST-style extractor using fitz (PyMuPDF)
-├── vishnuresume.pdf # Sample PDF used for testing
-├── pycache/ # Python cache files
-└── README.md # Project documentation (this file)
+├── app.py                   # Main Flask app with routes and logic
+├── extract_resume.py        # REST-style extractor using fitz (PyMuPDF)
+├── vishnuresume.pdf         # Sample PDF used for testing
+├── pycache/                 # Python cache files
+└── README.md                # Project documentation (this file)
 
-2️⃣ Create & Activate Virtual Environment
-bash
-Copy
-Edit
+# Installation & Setup
+
+## 2️⃣ Create & Activate Virtual Environment
+
+```bash
 python -m venv venv
 
-# For Linux/Mac:
-source venv/bin/activate
-
-# For Windows:
+For Windows
 venv\Scripts\activate
 
 3️⃣ Install Required Packages
-If you have a requirements.txt:
 
-bash
-Copy
-Edit
 pip install -r requirements.txt
-Otherwise, manually install:
-
-bash
-Copy
-Edit
 pip install Flask psycopg2-binary spacy pdfplumber PyMuPDF
 python -m spacy download en_core_web_sm
-🗄️ PostgreSQL Database Setup
+
+PostgreSQL Database Setup
+
 ✅ Step 1: Create Database
 Use psql or PgAdmin:
 
-sql
-Copy
-Edit
 CREATE DATABASE resume_db;
+
 ✅ Step 2: Create resumes Table
-sql
-Copy
-Edit
+
 CREATE TABLE resumes (
     id SERIAL PRIMARY KEY,
     name TEXT,
@@ -133,12 +121,9 @@ CREATE TABLE resumes (
     skills TEXT,
     education TEXT
 );
-✅ Step 3: Update Credentials in Code
-In both app.py and extract_resume.py, update this block with your DB credentials:
 
-python
-Copy
-Edit
+✅ Step 3: Update Credentials in Code
+
 psycopg2.connect(
     dbname="resume_db",
     user="postgres",
@@ -146,71 +131,69 @@ psycopg2.connect(
     host="localhost",
     port="5432"
 )
+
 📦 Python Dependencies
-Package	Purpose
-Flask	Web framework for routing and templating
-spaCy	NLP for extracting names and entities
-pdfplumber	PDF text extraction from uploaded files
-PyMuPDF (fitz)	Alternative fast PDF parser (API version)
-psycopg2-binary	PostgreSQL integration with Python
-re	Regex for email/phone matching
+| Package         | Purpose                                  |
+| --------------- | ---------------------------------------- |
+| Flask           | Web framework for routing and templating |
+| spaCy           | NLP for extracting names and entities    |
+| pdfplumber      | PDF text extraction from uploaded files  |
+| PyMuPDF (fitz)  | Alternative fast PDF parser              |
+| psycopg2-binary | PostgreSQL integration with Python       |
+| re              | Regex for email/phone matching           |
+
 
 🧪 Running the App
+
 ▶️ Option 1: Run Flask Web App
-bash
-Copy
-Edit
+
 python app.py
-Visit: http://localhost:5000
 
 ▶️ Option 2: Run API Resume Extractor
-bash
-Copy
-Edit
-python extract_resume.py
-Use Postman or cURL to test:
 
-h
-Copy
-Edit
+python extract_resume.py
+
 POST /upload
 Content-Type: multipart/form-data
 Body: resume (PDF file)
-Response (JSON):
 
-json
-Copy
-Edit
 {
   "name": "John Doe",
   "email": "john@example.com",
   "phone": "+919999999999"
 }
+
 📸 Screenshots
-(Add screenshots here manually in GitHub later if needed)
 
-Upload Resume: Choose and upload your resume
+Upload Resume – Choose and upload your resume
 
-Result View: Extracted Name, Email, Phone, Skills, Education
+Result View – Extracted Name, Email, Phone, Skills, Education
 
-Resume List: View all parsed resumes from DB with actions
+Resume List – View all parsed resumes from DB with actions
 
-Edit Resume: Manually update extracted info
+Edit Resume – Manually update extracted info
+
 
 ✅ Future Improvements
- Add support for .docx using python-docx
 
- Support image-based resumes via OCR (e.g., Tesseract)
+Add support for .docx using python-docx
 
- Improve NLP parsing using Transformer models (e.g., BERT)
+Support image-based resumes via OCR (e.g., Tesseract)
 
- Add file size/type validation
+Improve NLP parsing using transformer models like BERT
 
- Add user login and admin panel (Flask-Login)
+Add file size/type validation
 
- Export data to CSV/JSON
+Add user login and admin panel using Flask-Login
 
- Add Docker for containerized deployment
+Export parsed data to CSV/JSON
+
+Add Docker support for containerized deployment
+
+
+
+
+
 
 
 
